@@ -11,7 +11,7 @@
         <br>
         <br>
         <br>
-      <h4>Agregar mas articulo {{ $facturabd->idlfactura }}</h4>
+      <h4>Agregar Articulos {{ $facturabd->idlfactura }}</h4>
       </div>
       <div class="row contact-wrap">
         <div class="col-md-8 col-md-offset-2">
