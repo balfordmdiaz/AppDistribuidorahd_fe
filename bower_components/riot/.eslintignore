@@ -1,0 +1,3 @@
+test/vendor
+test/performance/db-monster
+test/performance/riot.*.js
