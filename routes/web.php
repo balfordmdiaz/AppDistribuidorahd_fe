@@ -20,12 +20,19 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::view('/','home')->name('home');
+
 //Route::view('/cliente','cliente')->name('cliente');
 
 //Route::view('/factura','factura')->name('factura');
 
 Auth::routes();
+
+//Route::view('/','home')->name('home');
+
+
+Route::get('/', function () {
+        return view('auth.login');
+});
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
