@@ -21,14 +21,14 @@ class FactDetalleController extends Controller
 
     public function facturador($id)
     {
-        return view('facturar.facturapdf',[
+        return view('Facturar.facturapdf',[
             'facturabd'=> facturaBD::findOrFail($id)
         ]);
     }
 
     public function descargar($id)
     {
-        $pdf=PDF::loadview('facturar.facturapdf',[
+        $pdf=PDF::loadview('Facturar.facturapdf',[
             'facturabd'=> facturaBD::findOrFail($id)
         ]);   
 
