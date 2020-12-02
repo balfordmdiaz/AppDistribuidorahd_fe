@@ -258,8 +258,12 @@ a.navbar-brand span {
     text-align: center;
 }
 
-#boton_nuevocliente,
+
 #boton_nuevoFactura h5 {
+    color: #36cbd4;
+}
+
+#boton_nuevocliente h5 {
     color: #36cbd4;
 }
 
