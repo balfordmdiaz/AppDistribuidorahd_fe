@@ -11,7 +11,7 @@ class Article
         $articulostockarray['']="Seleccione un articulo";
         foreach($articulostock as $article)
         {
-            $articulostockarray[$article->idarticulos]= $article->nombrearticulo;
+            $articulostockarray[$article->idarticulos]= $article->idlarticulos.' - '.$article->nombrearticulo;
         }
         return $articulostockarray;
     }
