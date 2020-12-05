@@ -29,7 +29,7 @@ class FacturaController extends Controller
     {
         $cliente=clienteBD::get();
         $factura=facturaBD::latest('idfactura')->first();
-        $empleado=empleadoBD::where('idempleado',auth()->user()->idempleado)->get();
+        $empleado=empleadoBD::where('idempleado',auth()->user()->idempleado)->first();
         if(!$factura)
         {
             $factura=new facturaBD();
