@@ -30,17 +30,13 @@
               </select>
             </div>
 
+            <div class="form-group" style="display:none">
+                 <input name="idlempleado" id="idlempleado" type="text" class="form-control" placeholder="Codigo factura" value="{{ $empleado->idempleado }}" readonly="readonly" />
+            </div>
+
             <div class="form-group">
-                  <label for="idemp" style="float: left">Empleado:</label>
-                  <select  id="idlempleado" name="idlempleado" class="form-control">
-                      @forelse($empleado as $empleadoItem)
-                            <option value="{{ $empleadoItem->idempleado }}">{{ $empleadoItem->idlempleado }} {{ $empleadoItem->nombre }} {{ $empleadoItem->apellido }}</option>
-                        
-                      @empty
-                            <option value="">No hay Empleado</option>
-                      @endforelse
-                             
-                  </select>  
+                  <label for="idemp" style="float: left">Empleado:</label>     
+                  <input name="mostrar_emp" id="mostrar_emp" type="text" class="form-control" placeholder="Codigo factura" value="{{ $empleado->idlempleado }} {{ $empleado->nombre }} {{ $empleado->apellido }}" readonly="readonly" />
             </div>
 
          
