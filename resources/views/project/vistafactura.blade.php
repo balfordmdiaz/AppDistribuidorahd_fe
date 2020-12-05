@@ -168,7 +168,6 @@
           </div>
 
           <div id="boton_form_factura">
-            <button type="submit" name="action" class="btn btn-primary btn-lg" value="final"><i class="fa fa-sign-in fa-1x"></i> Salir</button>
             <button type="submit" name="action" class="btn btn-primary btn-lg" value="facturar" ><i class="fa fa-file-text fa-1x"></i> Facturar</button>    
             <button type="submit" name="action" class="btn btn-primary btn-lg" value="agregar"
             onclick="toastr.success('El registro se ingreso correctamente','Nuevo Registro',{timeOut:5000});"

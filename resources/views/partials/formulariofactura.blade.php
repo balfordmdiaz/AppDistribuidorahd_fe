@@ -22,7 +22,7 @@
               <label for="idcliente" style="float: left">Cliente:</label>
               <select  name="idlcliente" class="form-control">
                     @forelse($cliente as $clienteItem)
-                            <option value="{{ $clienteItem->idcliente }}">{{ $clienteItem->idlcliente }} {{ $clienteItem->nombre }} {{ $clienteItem->departamento }}</option>
+                            <option value="{{ $clienteItem->idcliente }}">{{ $clienteItem->idlcliente }} - {{ $clienteItem->nombre }} {{ $clienteItem->apellido }} - {{ $clienteItem->departamento }}</option>
                     @empty
                             <option value="">No hay Clientes</option>
                     @endforelse
