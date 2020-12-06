@@ -73,7 +73,12 @@ th
 #descarga a
 {
     text-decoration:none;
-    color:#ADC4FF;
+    color:#DADADA;
+}
+
+#descarga a:hover
+{
+    color:#0074FF;
 }
 
 div.w-33 
@@ -96,7 +101,7 @@ div.center
     margin:0;
     text-decoration:none;
     background:none;
-    color:#DCABFF;
+    color:#DADADA;
     font-family: arial, sans-serif;
     font-size: 1em;
     line-height:1em;
@@ -105,7 +110,7 @@ div.center
 #imprimir_pdf:hover 
 {
     text-decoration:none;
-    color:#9300FF;
+    color:#0074FF;
     cursor:pointer;
 }
 
@@ -117,5 +122,10 @@ div.center
 #salir a
 {
     text-decoration:none;
-    color:#FFAFA4;
+    color:#DADADA;
+}
+
+#salir a:hover
+{
+    color:#A40F00;
 }

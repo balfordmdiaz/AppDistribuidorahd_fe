@@ -42,7 +42,7 @@
          
 @empty
       <tr>
-        <td colspan="4">
+        <td colspan="4" class="text-center">
              <p>No hay Factura para mostrar</p>
         </td>
       </tr>
