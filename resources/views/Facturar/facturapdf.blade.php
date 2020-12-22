@@ -108,10 +108,6 @@
 </div>
 
 
-<div id="descarga">
-    <a href=" {{ route('factura.descargar',$facturabd->idfactura) }} ">Descargar PDF</a>   
-</div>
-
 <div id="salir">
    <a href=" {{ route('factura.index') }} ">Salir</a>
 </div>
@@ -119,7 +115,7 @@
 
 <div class="w-33">
    <div class="center">
-           <button id="imprimir_pdf" onclick="imprimir()">Imprimir PDF</button>
+           <button id="imprimir_pdf" onclick="imprimir()">Imprimir</button>
    </div>
 </div>
 
