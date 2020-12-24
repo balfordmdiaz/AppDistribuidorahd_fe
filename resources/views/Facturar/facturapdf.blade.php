@@ -6,7 +6,7 @@
 
 
    <div id="datos_empresa" >
-      <h2>Distribuidora Hermanos Diaz</h2>
+      <h2>Distribuidora Variedades Hermanos Diaz</h2>
       <p><label>Telefono:</label> 
          {{ $telefonoemp = DB::table('tbl_empleado')->where('idempleado', $facturabd->idempleado)->value('telefono')  }} 
       </p>
@@ -98,7 +98,7 @@
 
 
 <div class="w-33">
-   <div class="center">
+   <div class="center" id="btnimprimir">
            <button id="imprimir_pdf" onclick="imprimir()">Imprimir</button>
    </div>
 </div>
@@ -108,6 +108,8 @@
 <script type="text/javascript">
    function imprimir()
    {   
+      btnimprimir.style.visibility = 'hidden';
+      salir.style.visibility = 'hidden';
      window.print();   
    } 
 </script>
