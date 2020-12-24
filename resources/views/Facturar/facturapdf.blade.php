@@ -28,22 +28,6 @@
          {{ $departamentoclient = DB::table('tbl_clientes')->where('idcliente', $facturabd->idcliente)->value('departamento') }}</p>
    </div>
 
-   <div id="datos_empleado" style="">
-      <h3 style="text-decoration: underline">Facturado por:</h3>
-
-      <p><label>Codigo Emp:</label> 
-         {{ $Direccionemp = DB::table('tbl_empleado')->where('idempleado', $facturabd->idempleado)->value('idlempleado')  }} 
-      </p>
-
-      <p><label> Empleado:</label> 
-         {{ $nombreemp = DB::table('tbl_empleado')->where('idempleado', $facturabd->idempleado)->value('nombre')  }} 
-         {{ $apellidoemp = DB::table('tbl_empleado')->where('idempleado', $facturabd->idempleado)->value('apellido') }}
-      </p>
-
-      
-
-   </div>
-
 
 <table id="tabladetalle">
     <thead>

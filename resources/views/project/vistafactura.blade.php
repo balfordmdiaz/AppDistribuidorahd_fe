@@ -168,8 +168,8 @@
           </div>
 
           <div id="boton_form_factura">
-            <button type="submit" name="action" class="btn btn-primary btn-lg" value="facturar" ><i class="fa fa-file-text fa-1x"></i> Facturar</button>    
-            <button type="submit" name="action" class="btn btn-primary btn-lg" value="agregar"
+            <button type="submit" name="action" class="btn btn-success btn-lg" value="facturar" ><i class="fa fa-file-text fa-1x"></i> Facturar</button>    
+            <button type="submit" name="action" class="btn btn-warning btn-lg" value="agregar"
             onclick="toastr.success('El registro se ingreso correctamente','Nuevo Registro',{timeOut:5000});"
             ><i class="fa fa-plus fa-1x"></i> Agregar Articulo</button>
           </div> 
