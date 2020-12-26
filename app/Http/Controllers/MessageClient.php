@@ -16,11 +16,8 @@ class MessageClient extends Controller
             'Idlcliente' => 'required',
             'Nombre'  => 'required',
             'Apellido'  => 'required',
-            'Telefono'  => 'required',
             'Departamento'  => 'required',
-            'Direccion'  => 'required',
-           
-            
+                   
         ]);
 
         /* Insertar de la manera antigua

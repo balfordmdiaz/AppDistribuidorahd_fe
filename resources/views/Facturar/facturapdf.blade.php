@@ -118,6 +118,6 @@
    {   
       btnimprimir.style.visibility = 'hidden';//Desahabilita los botones al imprimir
       salir.style.visibility = 'hidden';
-     window.print();   
+      window.print();   
    } 
 </script>

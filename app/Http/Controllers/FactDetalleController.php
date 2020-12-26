@@ -220,7 +220,7 @@ class FactDetalleController extends Controller
             $idarticulov=articuloBD::where('idarticulov',$request->idarticulov)->get();      
             foreach($idarticulov as $articulo){
                 
-                $articuloarray[$articulo->idarticulov] = $articulo->precio;
+                $articuloarray[$articulo->idarticulov] = $articulo->preciov;
             }
             return response()->json($articuloarray);
          }    
