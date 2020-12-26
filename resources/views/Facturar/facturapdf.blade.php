@@ -110,6 +110,6 @@
    {   
       btnimprimir.style.visibility = 'hidden';
       salir.style.visibility = 'hidden';
-     window.print();   
+      window.print();   
    } 
 </script>
