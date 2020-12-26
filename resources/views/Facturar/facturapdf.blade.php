@@ -12,6 +12,14 @@
       </p>
    </div>
 
+   <div id="datos_empleado" style="">
+      <p> 
+         {{ $nombreemp = DB::table('tbl_empleado')->where('idempleado', $facturabd->idempleado)->value('nombre')  }} 
+         {{ $apellidoemp = DB::table('tbl_empleado')->where('idempleado', $facturabd->idempleado)->value('apellido') }}
+      </p>
+
+   </div>
+
    <div id="datos_factura" >
       <h3>Factura</h3>
       Nro. Factura:{{$facturabd->idlfactura}}
@@ -108,7 +116,7 @@
 <script type="text/javascript">
    function imprimir()
    {   
-      btnimprimir.style.visibility = 'hidden';
+      btnimprimir.style.visibility = 'hidden';//Desahabilita los botones al imprimir
       salir.style.visibility = 'hidden';
      window.print();   
    } 
