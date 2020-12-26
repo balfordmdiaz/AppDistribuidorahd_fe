@@ -6,7 +6,7 @@
 
 
    <div id="datos_empresa" >
-      <h2>Distribuidora Hermanos Diaz</h2>
+      <h2>Distribuidora Variedades Hermanos Diaz</h2>
       <p><label>Telefono:</label> 
          {{ $telefonoemp = DB::table('tbl_empleado')->where('idempleado', $facturabd->idempleado)->value('telefono')  }} 
       </p>
@@ -26,22 +26,6 @@
          {{ $apellidoclient = DB::table('tbl_clientes')->where('idcliente', $facturabd->idcliente)->value('apellido') }}</p>
       <p><label>Departemanto:</label> 
          {{ $departamentoclient = DB::table('tbl_clientes')->where('idcliente', $facturabd->idcliente)->value('departamento') }}</p>
-   </div>
-
-   <div id="datos_empleado" style="">
-      <h3 style="text-decoration: underline">Facturado por:</h3>
-
-      <p><label>Codigo Emp:</label> 
-         {{ $Direccionemp = DB::table('tbl_empleado')->where('idempleado', $facturabd->idempleado)->value('idlempleado')  }} 
-      </p>
-
-      <p><label> Empleado:</label> 
-         {{ $nombreemp = DB::table('tbl_empleado')->where('idempleado', $facturabd->idempleado)->value('nombre')  }} 
-         {{ $apellidoemp = DB::table('tbl_empleado')->where('idempleado', $facturabd->idempleado)->value('apellido') }}
-      </p>
-
-      
-
    </div>
 
 
@@ -108,18 +92,14 @@
 </div>
 
 
-<div id="descarga">
-    <a href=" {{ route('factura.descargar',$facturabd->idfactura) }} ">Descargar PDF</a>   
-</div>
-
 <div id="salir">
    <a href=" {{ route('factura.index') }} ">Salir</a>
 </div>
 
 
 <div class="w-33">
-   <div class="center">
-           <button id="imprimir_pdf" onclick="imprimir()">Imprimir PDF</button>
+   <div class="center" id="btnimprimir">
+           <button id="imprimir_pdf" onclick="imprimir()">Imprimir</button>
    </div>
 </div>
 
@@ -128,6 +108,8 @@
 <script type="text/javascript">
    function imprimir()
    {   
+      btnimprimir.style.visibility = 'hidden';
+      salir.style.visibility = 'hidden';
      window.print();   
    } 
 </script>
