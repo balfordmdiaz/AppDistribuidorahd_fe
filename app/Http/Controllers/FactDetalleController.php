@@ -59,7 +59,7 @@ class FactDetalleController extends Controller
                    $aux_cantidad=request('cantidad');//obtener cantidad solicitada por usuario
                    
                     //si la cantidad disponible supera a la solicitada que inserte
-                   if($aux_disponible>$aux_cantidad)
+                   if($aux_disponible>=$aux_cantidad)
                    {      
                      //se inserta en detalle factura
                      factdetalleDB::create([
