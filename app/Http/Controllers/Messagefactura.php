@@ -33,7 +33,7 @@ class Messagefactura extends Controller
         
         facturaBD::create([
             'idlfactura' => request('idlfactura'),
-            'fechafactura' => $dt->format('Y/m/d, H:i:s'),
+            'fechafactura' => $dt->format('Y-m-d H:i:s'),
             'iva' => $auxiva,
             'descuento' => $auxdescuento,
             'subtotal' => $auxsubtotal,
