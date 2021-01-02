@@ -14,7 +14,7 @@
          </div>
 
           <div class="form-group">
-              <input name="Idlcliente" type="text" class="form-control" placeholder="Codigo Cliente" value="CL00{{$id=$id+1}}" readonly="readonly"/>
+              <input name="Idlcliente" type="text" class="form-control" placeholder="Codigo Cliente" value="CLI{{$id=$id+1}}" readonly="readonly"/>
           </div>
 
           <div class="form-group">
