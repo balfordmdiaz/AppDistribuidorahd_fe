@@ -127,7 +127,7 @@
 
           <div class="form-group">
              <label for="" style="float: left">Cantidad:</label>
-             <input name="cantidad" id="cantidad" type="number" class="form-control"  onkeyup="loadprecio()" pattern="^[0-9]+" oninput="this.value = Math.max(this.value, 0)"/>
+             <input name="cantidad" id="cantidad" type="number" step="any" class="form-control"  onkeyup="loadprecio()"/>
              {!! $errors->first('cantidad','<small class="message_error">:message</small><br>') !!}
           </div>
 
@@ -297,12 +297,12 @@
 
    var cantidadaux=document.getElementById('cantidad').value;
    var montoaux=0.00;
-   montoaux=precioaux*cantidadaux;
+   montoaux=precioaux*parseFloat(cantidadaux);
    console.log("precio:"+precioaux);
    console.log("cantidad:"+cantidadaux);
    console.log("monto:"+montoaux);
 
-   document.getElementById('monto').value=montoaux;
+   document.getElementById('monto').value=parseFloat(montoaux);
 
    document.getElementById('total').value=parseFloat(montoaux);
    }
