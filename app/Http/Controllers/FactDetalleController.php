@@ -226,4 +226,18 @@ class FactDetalleController extends Controller
          }    
 
     }
+
+    public function gettipo(Request $request)
+    {     
+        if($request->ajax()){
+            $idarticulov=articuloBD::where('idarticulov',$request->idarticulov)->get();      
+            foreach($idarticulov as $articulo){
+                
+                $articuloarray[$articulo->idarticulov] = $articulo->tipov;
+            }
+            return response()->json($articuloarray);
+         }    
+
+    }
+
 }

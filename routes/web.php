@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function ()
         Route::get('/home/factura/insertar/{id}/variante',[FactDetalleController::class, 'gettalla']);
         Route::get('/home/factura/insertar/{id}/colores',[FactDetalleController::class, 'getcolor']);
         Route::get('/home/factura/insertar/{id}/precio',[FactDetalleController::class, 'getprecio']);
+        Route::get('/home/factura/insertar/{id}/tipo',[FactDetalleController::class, 'gettipo']);
         Route::get('/home/factura/insertar/{id}/index/facturar',[FactDetalleController::class, 'facturador'])->name('factura.facturar');
         Route::get('/home/factura/insertar/{id}/index/facturar/descargar',[FactDetalleController::class, 'descargar'])->name('factura.descargar');
 
