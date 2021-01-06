@@ -33,7 +33,7 @@
           </div>
 
           <div class="form-group">
-              <input name="Telefono" type="number" class="form-control" placeholder="Telefono" max="10" value="{{ old('Telefono') }}" >
+              <input name="Telefono" type="text" class="form-control" placeholder="Telefono" maxlength="10" value="{{ old('Telefono') }}" >
               {!! $errors->first('Telefono','<small class="message_error">:message</small><br>') !!}
           </div>
 
