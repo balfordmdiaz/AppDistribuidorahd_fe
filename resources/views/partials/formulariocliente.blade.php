@@ -52,7 +52,7 @@
           </div>
           
           <div id="boton_form_client">
-             <button  class="btn btn-primary btn-lg" onclick="toastr.success('El registro se ingreso correctamente','Nuevo Registro',{timeOut:3000});"><i class="fa fa-plus fa-1x"></i> Registrar</button>
+             <button id="btnnuevo"  class="btn btn-primary btn-lg" onclick="toastr.success('El registro se ingreso correctamente','Nuevo Registro',{timeOut:3000});"><i class="fa fa-plus fa-1x"></i> Registrar</button>
           </div>
 
 
@@ -91,4 +91,14 @@
   });
   console.log("agua");
   */
+</script>
+
+<script>//Validacion de evitar carga de datos varias veces
+          $('#formcliente').submit(function(e)
+        {
+            $('#btnnuevo').on("click", function(e){
+              e.preventDefault();
+            });
+        });
+
 </script>
