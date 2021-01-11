@@ -41,7 +41,7 @@
 
          
             <div id="boton_form_factura">
-               <button  class="btn btn-primary btn-lg" onclick="toastr.success('El registro se ingreso correctamente','Nuevo Registro',{timeOut:3000});"><i class="fa fa-plus fa-1x"></i> Realizar Factura</button>
+               <button id="btnrealizarf" class="btn btn-primary btn-lg" onclick="toastr.success('El registro se ingreso correctamente','Nuevo Registro',{timeOut:3000});"><i class="fa fa-plus fa-1x"></i> Realizar Factura</button>
             </div>
 
 
@@ -53,7 +53,15 @@
     <!--/.container-->
   </section>
 
+  <script>//Validacion de evitar carga de datos varias veces
+          $('#formulariofactura').submit(function(e)
+        {
+            $('#btnrealizarf').on("click", function(e){
+              e.preventDefault();
+            });
+        });
 
+  </script>
 
 
 
