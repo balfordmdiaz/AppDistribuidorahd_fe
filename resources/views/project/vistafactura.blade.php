@@ -132,13 +132,13 @@
 
           <div class="form-group">
              <label for="" style="float: left">Cantidad:</label>
-             <input name="cantidad" id="cantidad" type="number" step="any" class="form-control"  onkeyup="loadprecio()"/>
+             <input name="cantidad" id="cantidad" type="number" step="any" class="form-control" />
              {!! $errors->first('cantidad','<small class="message_error">:message</small><br>') !!}
           </div>
 
           <div class="form-group" >
                <label for="" style="float: left">Precio:</label>
-               <input name="precio" id="precio" type="number" step="any" class="form-control" value="{{ old('precio') }}" readonly="readonly"/>        
+               <input name="precio" id="precio" type="number" step="any" class="form-control" value="{{ old('precio') }}"  onkeyup="ShowSelected()"/>        
           </div>
 
           <div class="form-group">
@@ -431,7 +431,8 @@ window.onload = ShowSelected; //para que cargue la funcion desde el principio
 
     $(document).ready(function()
     {
-         $('#color').on('change',loadprecio);
+        // $('#color').on('change',loadprecio);
+         //$('#color').on('change',loadprecio);
          $('#color').on('change',loadtipo);
     });
 </script>
