@@ -132,7 +132,7 @@
 
           <div class="form-group">
              <label for="" style="float: left">Cantidad:</label>
-             <input name="cantidad" id="cantidad" type="number" step="any" class="form-control" />
+             <input name="cantidad" id="cantidad" type="number" step="any" class="form-control" onkeyup="ShowSelected()"/>
              {!! $errors->first('cantidad','<small class="message_error">:message</small><br>') !!}
           </div>
 
