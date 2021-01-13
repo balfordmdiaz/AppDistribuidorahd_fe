@@ -41,7 +41,6 @@
     <thead>
          <tr>
             <th scope="col">Articulo</th>
-            <th scope="col">Talla</th>
             <th scope="col">Prec</th>
             <th scope="col">Cant</th>
             <th scope="col">Monto</th>
@@ -52,13 +51,12 @@
                           ->join('tbl_articulovariante', 'tbl_facturadetalle.idarticulov', '=', 'tbl_articulovariante.idarticulov')
                           ->join('tbl_factura', 'tbl_facturadetalle.idfactura', '=', 'tbl_factura.idfactura')
                           ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')
-                          ->select('tbl_articulostock.nombrearticulo','tbl_articulovariante.talla','tbl_facturadetalle.precio','tbl_facturadetalle.cantidad','tbl_facturadetalle.monto')
+                          ->select('tbl_articulostock.nombrearticulo','tbl_facturadetalle.precio','tbl_facturadetalle.cantidad','tbl_facturadetalle.monto')
                           ->where('tbl_facturadetalle.idfactura', $facturabd->idfactura)
                           ->get()  as $detalleItem)    
      <tbody>
       <tr>                 
-         <td>{{ $detalleItem->nombrearticulo }}</td>  
-         <td>{{ $detalleItem->talla }}</td>  
+         <td>{{ $detalleItem->nombrearticulo}}</td>
          <td>{{ $detalleItem->precio}}</td>  
          <td>{{ $detalleItem->cantidad }}</td>  
          <td>{{ $detalleItem->monto }} C$</td>
