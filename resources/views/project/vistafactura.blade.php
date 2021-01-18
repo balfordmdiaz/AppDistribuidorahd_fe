@@ -130,6 +130,11 @@
                <input name="Tipov" id="Tipov" type="text" class="form-control" value="" readonly="readonly"/>        
           </div>
 
+          <div class="form-group" >
+               <label for="" style="float: left">Stock:</label>
+               <input name="Stock" id="Stock" type="text" class="form-control" value="" readonly="readonly"/>        
+          </div>
+
           <div class="form-group">
              <label for="" style="float: left">Cantidad:</label>
              <input name="cantidad" id="cantidad" type="number" step="any" class="form-control" onkeyup="ShowSelected()"/>
@@ -428,12 +433,33 @@ window.onload = ShowSelected; //para que cargue la funcion desde el principio
 
     }
 
+    function loadstock()
+    {
+        var idarticulov=$('#color').val();
+        var idarticulos=$('#idarticulostock').val();
+        console.log("id stock:"+idarticulos);
+        console.log("id variante:"+idarticulov);
+
+        if($.trim(idarticulov) != '')
+        {
+          $.get('stock',{idarticulov: idarticulov},function(variable){
+
+          $.each(variable,function(index,value){
+             $('#Stock').val(value);
+          })     
+        });
+
+        ShowSelected();
+        }
+
+    }
+
 
     $(document).ready(function()
     {
-        // $('#color').on('change',loadprecio);
          //$('#color').on('change',loadprecio);
          $('#color').on('change',loadtipo);
+         $('#color').on('change',loadstock);
     });
 </script>
 

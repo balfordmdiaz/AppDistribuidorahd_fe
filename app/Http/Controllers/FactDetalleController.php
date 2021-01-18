@@ -240,4 +240,17 @@ class FactDetalleController extends Controller
 
     }
 
+    public function getstock(Request $request)
+    {     
+        if($request->ajax()){
+            $idarticulov=articuloBD::where('idarticulov',$request->idarticulov)->get();      
+            foreach($idarticulov as $articulo){
+                
+                $articuloarray[$articulo->idarticulov] = $articulo->cantidad;
+            }
+            return response()->json($articuloarray);
+         }    
+
+    }
+
 }
