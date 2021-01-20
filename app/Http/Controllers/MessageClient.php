@@ -15,7 +15,6 @@ class MessageClient extends Controller
         request()->validate([
             'Idlcliente' => 'required',
             'Nombre'  => 'required',
-            'Apellido'  => 'required',
             'Departamento'  => 'required',
                    
         ]);
@@ -60,12 +59,7 @@ class MessageClient extends Controller
         request()->validate([
             'Idlcliente' => 'required',
             'Nombre'  => 'required',
-            'Apellido'  => 'required',
-            'Cedula'  => 'required',
-            'Telefono'  => 'required',
             'Departamento'  => 'required',
-            'Direccion'  => 'required',
-            'Email'  => 'required|email'
             
         ]);
 
