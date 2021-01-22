@@ -86,12 +86,19 @@
           <div class="form-group">
             <label for="" style="float: left">Articulo:</label> 
             <select  id="idarticulostock" name="idarticulos" class="form-control" >
-              @foreach($articulostock->get() as $index => $article)
+              <!--@foreach($articulostock->get() as $index => $article)
                    <option value="{{ $index }}" {{ old('idarticulos') == $index ? 'selected' : '' }}>
                       {{ $article }}
                    </option>
-              @endforeach  
-              
+              @endforeach--> 
+              <option value="">Seleccione el Articulo</option> 
+              	@forelse($stock = DB::table('tbl_articulostock')
+                                        ->orderBy('idlarticulos', 'ASC')
+                                        ->get() as $stockItem)
+                        <option value="{{ $stockItem->idarticulos }}">{{ $stockItem->idlarticulos }} - {{ $stockItem->nombrearticulo }}</option>
+                @empty
+                        <option value="">No hay Articulo</option>
+                @endforelse
 
             </select> 
             @if ($errors->has('idarticulos'))
