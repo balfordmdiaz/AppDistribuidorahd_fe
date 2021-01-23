@@ -1,6 +1,7 @@
    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{asset('static/js/jquery-2.1.1.min.js')}}"></script>
+    <!--<script src="{{asset('js/jquery/jquery-3.5.1.min.js')}}"></script>-->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{asset('static/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('static/js/wow.min.js')}}"></script>

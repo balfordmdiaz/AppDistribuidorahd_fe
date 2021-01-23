@@ -2,6 +2,11 @@
 
 @section('title',$facturabd->idlfactura)
 
+@section('css')
+  <link rel="stylesheet" href="{{asset('js/jquery-ui/jquery-ui.min.css')}}">
+
+@endsection
+
 @section('content')
 @inject('articulostock', 'App\Services\Article')
 
@@ -84,14 +89,15 @@
            </div>
 
           <div class="form-group">
-            <label for="" style="float: left">Articulo:</label> 
-            <select  id="idarticulostock" name="idarticulos" class="form-control" >
+            <label for="" style="float: left">Articulo:</label>
+            <input id="idarticulostock" name="idarticulostock" type="text" class="form-control" >
+            <!--<select  id="idarticulostock" name="idarticulos" class="form-control" >--> 
               <!--@foreach($articulostock->get() as $index => $article)
                    <option value="{{ $index }}" {{ old('idarticulos') == $index ? 'selected' : '' }}>
                       {{ $article }}
                    </option>
               @endforeach--> 
-              <option value="">Seleccione el Articulo</option> 
+              <!--<option value="">Seleccione el Articulo</option> 
               	@forelse($stock = DB::table('tbl_articulostock')
                                         ->orderBy('idlarticulos', 'ASC')
                                         ->get() as $stockItem)
@@ -105,7 +111,7 @@
                <span class="invalid-feedback" role="alert">
                    <strong>{{ $errors->first('idarticulos') }}</strong>
                </span>
-            @endif   
+            @endif   -->
          </div>
 
           <div class="form-group">
@@ -271,6 +277,30 @@
 @endsection
 
 @section('script')
+
+  
+  <script src="{{asset('js/jquery-ui/jquery-ui.min.js')}}"></script>
+
+  <script>
+
+      $('#idarticulostock').autocomplete({
+          source: function(request, response){
+
+              $.ajax({
+                  url: "{{route('factura.agregar',$facturabd->idfactura,'search')}}",
+                  dataType: 'json',
+                  data: {
+                      term: request.term
+                  },
+                  success: function(data){
+                      response(data)
+                  }
+              });
+          }
+
+      });
+
+  </script>
 
   <script>//Validacion de evitar carga de datos varias veces
           $('#formularioagregar').submit(function(e)

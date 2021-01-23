@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function ()
         Route::get('/home/factura/insertar',[FacturaController::class, 'insertar'])->name('factura.insertar');
 
         Route::get('/home/factura/insertar/{id}/index',[FactDetalleController::class, 'index'])->name('factura.vistafactura');
+        Route::get('/home/factura/insertar/{id}/term',[FactDetalleController::class, 'search'])->name('factura.search');
         Route::get('/home/factura/insertar/{id}/variante',[FactDetalleController::class, 'gettalla']);
         Route::get('/home/factura/insertar/{id}/colores',[FactDetalleController::class, 'getcolor']);
         Route::get('/home/factura/insertar/{id}/precio',[FactDetalleController::class, 'getprecio']);
