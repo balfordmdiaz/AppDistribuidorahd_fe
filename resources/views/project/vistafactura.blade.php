@@ -287,7 +287,7 @@
           source: function(request, response){
 
               $.ajax({
-                  url: "{{route('factura.agregar',$facturabd->idfactura,'search')}}",
+                  url: "{{route('factura.agregar',$facturabd->idfactura,'articulo')}}",
                   dataType: 'json',
                   data: {
                       term: request.term

@@ -37,28 +37,6 @@ class FactDetalleController extends Controller
         return $pdf->download($nombre->idlfactura.".pdf");
     }
 
-    public function search(Request $request)
-    {
-        $term = $request->get('term');
-
-//        $querys = DB::table('tbl_articulostock')
-//                        ->select('tbl_articulostock.idarticulos','tbl_articulostock.idlarticulos','tbl_articulostock.nombrearticulo')
-//                        ->where('tbl_articulostock.nombrearticulo', 'LIKE', '%' . $term . '%')->get();
-        $querys = ArticuloStock::where('tbl_articulostock.nombrearticulo', 'LIKE', '%' . $term . '%')->get();         
-
-        $data = [];
-
-        foreach ($querys as $query) {
-
-            $data[] = [
-                'label' => $query->nombrearticulo
-            ];
-
-        }
-
-        return $data;
-    }
-
     public function store()
     {
         $aux=request('idlfactura');

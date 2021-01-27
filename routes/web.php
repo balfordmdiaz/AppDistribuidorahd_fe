@@ -9,6 +9,7 @@ use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\Messagefactura;
 use App\Http\Controllers\FactDetalleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,7 @@ Route::middleware(['auth'])->group(function ()
         Route::get('/home/factura/insertar',[FacturaController::class, 'insertar'])->name('factura.insertar');
 
         Route::get('/home/factura/insertar/{id}/index',[FactDetalleController::class, 'index'])->name('factura.vistafactura');
-        Route::get('/home/factura/insertar/{id}/term',[FactDetalleController::class, 'search'])->name('factura.search');
+        Route::get('/home/search/articulo', [SearchController::class, 'articulo'])->name('search.articulo');
         Route::get('/home/factura/insertar/{id}/variante',[FactDetalleController::class, 'gettalla']);
         Route::get('/home/factura/insertar/{id}/colores',[FactDetalleController::class, 'getcolor']);
         Route::get('/home/factura/insertar/{id}/precio',[FactDetalleController::class, 'getprecio']);
@@ -63,6 +64,9 @@ Route::middleware(['auth'])->group(function ()
         Route::post('/home/factura/insertar',[Messagefactura::class, 'store'])->name('factura.store');
 
         Route::post('/home/factura/insertar/{id}/index',[FactDetalleController::class, 'store'])->name('factura.agregar');
+
+        //Route::get('/home/search/articulo', [SearchController::class, 'articulo'])->name('search.articulo');
+
 });
 
 
