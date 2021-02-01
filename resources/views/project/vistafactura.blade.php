@@ -285,7 +285,6 @@
 
       $('#idarticulostock').autocomplete({
           source: function(request, response){
-
               $.ajax({
                   url: "{{route('factura.agregar',$facturabd->idfactura,'articulo')}}",
                   dataType: 'json',

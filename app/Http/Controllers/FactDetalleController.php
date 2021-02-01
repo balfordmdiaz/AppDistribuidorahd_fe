@@ -12,29 +12,10 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class FactDetalleController extends Controller
 {
-    public function index($id, Request $request)
-    {   
-        $term = $request->get('term');
-    
-    //        $querys = DB::table('tbl_articulostock')
-    //                        ->select('tbl_articulostock.idarticulos','tbl_articulostock.idlarticulos','tbl_articulostock.nombrearticulo')
-    //                        ->where('tbl_articulostock.nombrearticulo', 'LIKE', '%' . $term . '%')->get();
-            $querys = ArticuloStock::where('tbl_articulostock.nombrearticulo', 'LIKE', '%' . $term . '%')->get();         
-    
-            $data = [];
-    
-            foreach ($querys as $query) {
-    
-                $data[] = [
-                    'label' => $query->nombrearticulo
-                ];
-    
-            } 
-
-
+    public function index($id)
+    {  
         return view('project.vistafactura', [
-            'facturabd'=> facturaBD::findOrFail($id),
-            'idarticulostock'=> ($data)
+            'facturabd'=> facturaBD::findOrFail($id)
         ]);
     }
 
