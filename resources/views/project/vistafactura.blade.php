@@ -2,11 +2,6 @@
 
 @section('title',$facturabd->idlfactura)
 
-@section('css')
-  <link rel="stylesheet" href="{{asset('js/jquery-ui/jquery-ui.min.css')}}">
-
-@endsection
-
 @section('content')
 @inject('articulostock', 'App\Services\Article')
 
@@ -90,7 +85,7 @@
 
           <div class="form-group">
             <label for="" style="float: left">Articulo:</label>
-            <input id="idarticulostock" name="idarticulostock" type="text" class="form-control" >
+            <input id="idarticulostock" name="idarticulostock" type="text" class="form-control" value="">
             <!--<select  id="idarticulostock" name="idarticulos" class="form-control" >--> 
               <!--@foreach($articulostock->get() as $index => $article)
                    <option value="{{ $index }}" {{ old('idarticulos') == $index ? 'selected' : '' }}>
@@ -162,6 +157,11 @@
           <div class="form-group">
             <label for="" style="float: left">Monto:</label>
             <input name="monto" id="monto" type="number" step="any" class="form-control" readonly="readonly"/>       
+          </div>
+
+          <div class="form-group" style="">
+            <label for="" style="float: left">Comentario:</label>
+            <input id="comentario" name="comentario" type="text" class="form-control" />
           </div>
 
           <div class="form-group">
@@ -286,7 +286,7 @@
       $('#idarticulostock').autocomplete({
           source: function(request, response){
               $.ajax({
-                  url: "{{route('factura.agregar',$facturabd->idfactura,'articulo')}}",
+                  url: "{{route('search.articulo',$facturabd->idfactura,'articulo')}}",
                   dataType: 'json',
                   data: {
                       term: request.term
@@ -324,7 +324,7 @@
           if($.trim(idarticulos) != '')
           {
               
-            $.get('variante',{idarticulos: idarticulos}, function(variantes){
+            $.get('variante',{nombrearticulo: idarticulos}, function(variantes){
                      
                     var old=$('#idarticulov').data('old') != '' ? $('#idarticulov').data('old') : '';
                     $('#idarticulov').empty();
@@ -412,7 +412,7 @@ window.onload = ShowSelected; //para que cargue la funcion desde el principio
             var talla=$('#idarticulov option:selected').text()
             if($.trim(idarticulos) != '')
             {
-               $.get('colores',{idarticulos: idarticulos,talla: talla}, function(variantes){
+               $.get('colores',{nombrearticulo: idarticulos, talla: talla}, function(variantes){
             
                      var old=$('#color').data('old') != '' ? $('#color').data('old') : '';
                      $('#color').empty();

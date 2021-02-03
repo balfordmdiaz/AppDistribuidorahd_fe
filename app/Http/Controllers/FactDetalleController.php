@@ -22,7 +22,7 @@ class FactDetalleController extends Controller
     public function facturador($id)
     {
         return view('Facturar.facturapdf',[
-            'idarticulostock'=> ($id)
+            'facturabd'=> facturaBD::findOrFail($id)
         ]);
     }
 
@@ -50,7 +50,7 @@ class FactDetalleController extends Controller
 
                    request()->validate([
                          'cantidad' => 'required|numeric|gt:0',
-                         'total' => 'required|numeric|gt:0',
+                         //'total' => 'required|numeric|gt:0',
                    ]);
 
                    $aux_disponible=$cantidad_disponible->cantidad;//obtener cantida disponible
@@ -67,6 +67,7 @@ class FactDetalleController extends Controller
                          'cantidad' => request('cantidad'),
                          'precio' => request('precio'),
                          'monto' => request('monto'),
+                         'comentario' => request('comentario'),
                          'idarticulov' => request('idarticulo'),
                          'idfactura' => $factura->idfactura,
              
@@ -190,7 +191,13 @@ class FactDetalleController extends Controller
     public function gettalla(Request $request)
     {
            if($request->ajax()){
-              $idarticulov=articuloBD::select('talla')->distinct()->where('idarticulos',$request->idarticulos)->get();
+              //$idarticulov=articuloBD::select('talla')->distinct()->where('idarticulos',$request->idarticulos)->get();
+              $idarticulov= DB::table('tbl_articulovariante')
+                            ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')
+                            ->select('tbl_articulovariante.talla')
+                            ->distinct()
+                            ->where('tbl_articulostock.nombrearticulo',$request->nombrearticulo)
+                            ->get(); 
               $count=1;
               foreach($idarticulov as $articulo){
                   $articuloarray[$count] = $articulo->talla;
@@ -203,7 +210,13 @@ class FactDetalleController extends Controller
     public function getcolor(Request $request)
     {
         if($request->ajax()){
-            $idarticulov=articuloBD::where('idarticulos','=',$request->idarticulos)->where('talla','LIKE',$request->talla)->get();      
+            //$idarticulov=articuloBD::where('idarticulos','=',$request->idarticulos)->where('talla','LIKE',$request->talla)->get();
+            $idarticulov= DB::table('tbl_articulovariante')
+                            ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')
+                            //->select('tbl_articulovariante.color')
+                            ->where('tbl_articulostock.nombrearticulo',$request->nombrearticulo)
+                            ->where('tbl_articulovariante.talla',$request->talla)
+                            ->get();      
             foreach($idarticulov as $articulo){
                 
                 $articuloarray[$articulo->idarticulov] = $articulo->color;

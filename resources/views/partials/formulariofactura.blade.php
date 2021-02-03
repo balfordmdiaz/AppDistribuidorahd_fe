@@ -15,7 +15,7 @@
 
            <div class="form-group">
                 <label for="idfac" style="float: left">Codigo de Factura:</label>
-                <input name="idlfactura" type="text" class="form-control" placeholder="Codigo factura" value="FAC00{{ $id=$id+1 }}" readonly="readonly" />
+                <input name="idlfactura" type="text" class="form-control" placeholder="Codigo factura" value="FAC000{{ $id=$id+1 }}" readonly="readonly" />
            </div>
         
             <div class="form-group">

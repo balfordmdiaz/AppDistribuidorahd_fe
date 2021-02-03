@@ -12,7 +12,7 @@ class factdetalleDB extends Model
     protected $table='tbl_facturadetalle';
     protected $primaryKey = 'idfacturadetalle';
 
-    protected $fillable = ['cantidad','precio','monto','idarticulov','idfactura'];
+    protected $fillable = ['cantidad','precio','monto','comentario','idarticulov','idfactura'];
 
     public $timestamps = false;
 }
