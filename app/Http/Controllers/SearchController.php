@@ -13,8 +13,11 @@ class SearchController extends Controller
             $term = $request->get('term');
     
             $querys = DB::table('tbl_articulostock')
-                            ->select('tbl_articulostock.idarticulos','tbl_articulostock.idlarticulos','tbl_articulostock.nombrearticulo')
-                            ->where('tbl_articulostock.nombrearticulo', 'LIKE', '%' . $term . '%')->get();
+                            //->select('tbl_articulostock.idarticulos','tbl_articulostock.idlarticulos','tbl_articulostock.nombrearticulo')
+                            ->select('tbl_articulostock.idarticulos', DB::raw("CONCAT(tbl_articulostock.idlarticulos,' - ',tbl_articulostock.nombrearticulo) as Articulo"))
+                            ->where('tbl_articulostock.idlarticulos', 'LIKE', '%' . $term . '%')
+                            ->orWhere('tbl_articulostock.nombrearticulo', 'LIKE', '%' . $term . '%')
+                            ->get();
            // $querys = ArticuloStock::where('tbl_articulostock.nombrearticulo', 'LIKE', '%' . $term . '%')->get();         
     
             $data = [];
@@ -22,7 +25,7 @@ class SearchController extends Controller
             foreach ($querys as $query) {
     
                 $data[] = [
-                    'label' => $query->nombrearticulo
+                    'label' => $query->Articulo
                 ];
     
             }
@@ -30,5 +33,5 @@ class SearchController extends Controller
             return $data;
         }
 
-
+        
 }
