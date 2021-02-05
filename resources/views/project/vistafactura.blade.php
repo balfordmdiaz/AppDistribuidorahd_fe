@@ -111,17 +111,17 @@
 
           <div class="form-group">
               <label for="" style="float: left">Talla Articulo:</label> 
-              <select  id="idarticulov" name="idarticulo" data-old="{{ old('idarticulo') }}" class="form-control{{ $errors->has('idarticulo') ? ' is-invalid' : '' }}">
+              <select  id="idarticulov" name="idarticulov" data-old="{{ old('idarticulov') }}" class="form-control{{ $errors->has('idarticulov') ? ' is-invalid' : '' }}">
               </select> 
 
-              @if ($errors->has('idarticulo'))
+              @if ($errors->has('idarticulov'))
                    <span class="invalid-feedback" role="alert">
-                       <strong>{{ $errors->first('idarticulo') }}</strong>
+                       <strong>{{ $errors->first('idarticulov') }}</strong>
                    </span>
               @endif
           </div>
         
-          <!--<div class="form-group">
+          <div class="form-group">
             <label for="" style="float: left">Color Articulo:</label> 
             <select  id="color" data-old="{{ old('idarticulo') }}" name="idarticulo" class="form-control{{ $errors->has('idarticulo') ? ' is-invalid' : '' }}">
             </select> 
@@ -131,7 +131,7 @@
                      <strong>{{ $errors->first('idarticulo') }}</strong>
                  </span>
             @endif
-        </div>-->
+        </div>
 
           <div class="form-group" >
                <label for="" style="float: left">Tipo:</label>
@@ -347,7 +347,7 @@
   {
     
    //obtener el id articulo seleccionado
-   var elementos = document.getElementById('idarticulov').value;
+   var elementos = document.getElementById('color').value;
    console.log(elementos);
 
 
@@ -404,28 +404,28 @@ window.onload = ShowSelected; //para que cargue la funcion desde el principio
 
 
 <script>
-//    $(document).ready(function(){
-//
-//         function loadcolor()
-//         { 
-//            var idarticulos=$('#idarticulostock').val();
-//            var talla=$('#idarticulov option:selected').text()
-//            if($.trim(idarticulos) != '')
-//            {
-//               $.get('colores',{nombrearticulo: idarticulos, talla: talla}, function(variantes){
-//            
-//                     var old=$('#color').data('old') != '' ? $('#color').data('old') : '';
-//                     $('#color').empty();
-//                     $('#color').append("<option value=''>Selecciona color</option>");
-//                     $.each(variantes,function(index,value){
-//                       $('#color').append("<option value='"+index+"'"+ (old==index ? 'selected' : '') +">"+value+"</option>");
-//                     })
-//             });
-//           }       
-//        }
-//        loadcolor();
-//        $('#idarticulov').on('change', loadcolor);
-//    });
+    $(document).ready(function(){
+
+         function loadcolor()
+         { 
+            var idarticulos=$('#idarticulostock').val();
+            var talla=$('#idarticulov option:selected').text()
+            if($.trim(idarticulos) != '')
+            {
+               $.get('colores',{idarticulos: idarticulos, talla: talla}, function(variantes){
+            
+                     var old=$('#color').data('old') != '' ? $('#color').data('old') : '';
+                     $('#color').empty();
+                     $('#color').append("<option value=''>Selecciona color</option>");
+                     $.each(variantes,function(index,value){
+                       $('#color').append("<option value='"+index+"'"+ (old==index ? 'selected' : '') +">"+value+"</option>");
+                     })
+             });
+           }       
+        }
+        loadcolor();
+        $('#idarticulov').on('change', loadcolor);
+    });
     
 //    function loadprecio()
 //    {
@@ -450,7 +450,7 @@ window.onload = ShowSelected; //para que cargue la funcion desde el principio
 
     function loadtipo()
     {
-        var idarticulov=$('#idarticulov').val();
+        var idarticulov=$('#color').val();
         var idarticulos=$('#idarticulostock').val();
         console.log("id stock:"+idarticulos);
         console.log("id variante:"+idarticulov);
@@ -471,7 +471,7 @@ window.onload = ShowSelected; //para que cargue la funcion desde el principio
 
     function loadstock()
     {
-        var idarticulov=$('#idarticulov').val();
+        var idarticulov=$('#color').val();
         var idarticulos=$('#idarticulostock').val();
         console.log("id stock:"+idarticulos);
         console.log("id variante:"+idarticulov);
@@ -494,8 +494,8 @@ window.onload = ShowSelected; //para que cargue la funcion desde el principio
     $(document).ready(function()
     {
          //$('#color').on('change',loadprecio);
-         $('#idarticulov').on('change',loadtipo);
-         $('#idarticulov').on('change',loadstock);
+         $('#color').on('change',loadtipo);
+         $('#color').on('change',loadstock);
     });
 </script>
 
