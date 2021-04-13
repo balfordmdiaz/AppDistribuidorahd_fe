@@ -221,13 +221,13 @@ class FactDetalleController extends Controller
     public function getcolor(Request $request)
     {
         if($request->ajax()){
-            $idarticulov=articuloBD::where('idarticulos','=',$request->idarticulos)->where('talla','LIKE',$request->talla)->get();
+           $idarticulov=articuloBD::where('idarticulos','=',$request->idarticulos)->where('talla','LIKE',$request->talla)->get();
 //            $idarticulov= DB::table('tbl_articulovariante')
 //                            ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')
 //                            //->select('tbl_articulovariante.color')
 //                            ->where('tbl_articulostock.nombrearticulo',$request->nombrearticulo)
 //                            ->where('tbl_articulovariante.talla',$request->talla)
-//                            ->get();                  
+//                            ->get();              
             
             foreach($idarticulov as $articulo){
                 
