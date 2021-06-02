@@ -159,7 +159,7 @@
             <input name="monto" id="monto" type="number" step="any" class="form-control" readonly="readonly"/>       
           </div>
 
-          <div class="form-group">
+          <div class="form-group" style="">
             <label for="" style="float: left">Comentario:</label>
             <input id="comentario" name="comentario" type="text" class="form-control" />
           </div>
@@ -281,7 +281,7 @@
   
   <script src="{{asset('js/jquery-ui/jquery-ui.min.js')}}"></script>
 
-  <script>// manda a llamar o autocompletar datos buscados
+  <script>
 
       $('#idarticulostock').autocomplete({
           source: function(request, response){
@@ -324,7 +324,7 @@
           if($.trim(idarticulos) != '')
           {
               
-            $.get('variante',{Articulo: idarticulos}, function(variantes){
+            $.get('variante',{nombrearticulo: idarticulos}, function(variantes){
                      
                     var old=$('#idarticulov').data('old') != '' ? $('#idarticulov').data('old') : '';
                     $('#idarticulov').empty();
@@ -412,7 +412,7 @@ window.onload = ShowSelected; //para que cargue la funcion desde el principio
             var talla=$('#idarticulov option:selected').text()
             if($.trim(idarticulos) != '')
             {
-               $.get('colores',{idarticulos: idarticulos, talla: talla}, function(variantes){
+               $.get('colores',{nombrearticulo: idarticulos, talla: talla}, function(variantes){
             
                      var old=$('#color').data('old') != '' ? $('#color').data('old') : '';
                      $('#color').empty();
@@ -427,26 +427,26 @@ window.onload = ShowSelected; //para que cargue la funcion desde el principio
         $('#idarticulov').on('change', loadcolor);
     });
     
-//    function loadprecio()
-//    {
-//        var idarticulov=$('#color').val();
-//        var idarticulos=$('#idarticulostock').val();
-//        console.log("id stock:"+idarticulos);
-//        console.log("id variante:"+idarticulov);
-//
-//        if($.trim(idarticulov) != '')
-//        {
-//          $.get('precio',{idarticulov: idarticulov},function(variable){
-//
-//          $.each(variable,function(index,value){
-//             $('#precio').val(value);
-//          })     
-//        });
-//
-//        ShowSelected();
-//        }
-//
-//    }
+    function loadprecio()
+    {
+        var idarticulov=$('#color').val();
+        var idarticulos=$('#idarticulostock').val();
+        console.log("id stock:"+idarticulos);
+        console.log("id variante:"+idarticulov);
+
+        if($.trim(idarticulov) != '')
+        {
+          $.get('precio',{idarticulov: idarticulov},function(variable){
+
+          $.each(variable,function(index,value){
+             $('#precio').val(value);
+          })     
+        });
+
+        ShowSelected();
+        }
+
+    }
 
     function loadtipo()
     {
