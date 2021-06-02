@@ -43,8 +43,11 @@ class FactDetalleController extends Controller
         $aux_articulo=request('idarticulo');
         $factura = facturaBD::where('idlfactura', $aux)->first();
         $cantidad_disponible=articuloBD::where('idarticulov', $aux_articulo)->first();//obtengo articulo seleccionado
-
-
+        // $cantidad_disponible= DB::table('tbl_articulovariante')
+        //                            ->select('tbl_articulovariante.cantidad','tbl_articulovariante.talla')
+        //                            ->where('idarticulov', $aux_articulo)
+        //                            ->first();
+//
         switch (request()->input('action')) {
             case 'agregar':
 
@@ -118,8 +121,9 @@ class FactDetalleController extends Controller
                     }
                     else
                     {
-                       $nombre_art=ArticuloStock::where('idarticulos',request('idarticulos'))->first();
+                       $nombre_art=ArticuloStock::where('idarticulos',request('idarticulostock'))->first();
                        $mensaje=" Cantidad excede a la disponible en el inventario-".$nombre_art->nombrearticulo." ".$aux_talla." ".$aux_color." cantidad actual:".$aux_disponible;
+                       //$mensaje=" Cantidad excede a la disponible en el inventario-".$nombre_art->nombrearticulo." ".$aux_talla." cantidad actual:".$aux_disponible;
                        return back()->with('flash',$mensaje);
                     }
 
@@ -192,12 +196,19 @@ class FactDetalleController extends Controller
     {
            if($request->ajax()){
               //$idarticulov=articuloBD::select('talla')->distinct()->where('idarticulos',$request->idarticulos)->get();
-              $idarticulov= DB::table('tbl_articulovariante')
-                            ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')
+//              $idarticulov= DB::table('tbl_articulovariante')
+//                            ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')  //buscar talla mediante el nombrearticulo
+//                            ->select('tbl_articulovariante.talla')
+//                            ->distinct()
+//                            ->where('tbl_articulostock.nombrearticulo',$request->nombrearticulo)
+//                            ->get(); 
+                $idarticulov= DB::table('tbl_articulovariante')
+                            ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos') //buscar talla mediante el idlarticulos
+                            //->select('tbl_articulovariante.talla', DB::raw("CONCAT(tbl_articulostock.idlarticulos,' - ',tbl_articulostock.nombrearticulo) as Articulo"))
                             ->select('tbl_articulovariante.talla')
                             ->distinct()
-                            ->where('tbl_articulostock.nombrearticulo',$request->nombrearticulo)
-                            ->get(); 
+                            ->where('tbl_articulostock.idlarticulos',$request->idlarticulos)
+                            ->get();              
               $count=1;
               foreach($idarticulov as $articulo){
                   $articuloarray[$count] = $articulo->talla;
@@ -210,13 +221,19 @@ class FactDetalleController extends Controller
     public function getcolor(Request $request)
     {
         if($request->ajax()){
-            //$idarticulov=articuloBD::where('idarticulos','=',$request->idarticulos)->where('talla','LIKE',$request->talla)->get();
+           //$idarticulov=articuloBD::where('idarticulos','=',$request->idarticulos)->where('talla','LIKE',$request->talla)->get();
+            //$idarticulov= DB::table('tbl_articulovariante')
+            //                ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')
+            //                //->select('tbl_articulovariante.color')
+            //                ->where('tbl_articulostock.nombrearticulo',$request->nombrearticulo)
+            //                ->where('tbl_articulovariante.talla',$request->talla)
+            //                ->get();     
             $idarticulov= DB::table('tbl_articulovariante')
                             ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')
-                            //->select('tbl_articulovariante.color')
-                            ->where('tbl_articulostock.nombrearticulo',$request->nombrearticulo)
+                            ->where('tbl_articulostock.idlarticulos',$request->idlarticulos)
                             ->where('tbl_articulovariante.talla',$request->talla)
-                            ->get();      
+                            ->get();         
+            
             foreach($idarticulov as $articulo){
                 
                 $articuloarray[$articulo->idarticulov] = $articulo->color;
@@ -227,23 +244,30 @@ class FactDetalleController extends Controller
 
     }
 
-    public function getprecio(Request $request)
-    {     
-        if($request->ajax()){
-            $idarticulov=articuloBD::where('idarticulov',$request->idarticulov)->get();      
-            foreach($idarticulov as $articulo){
-                
-                $articuloarray[$articulo->idarticulov] = $articulo->preciov;
-            }
-            return response()->json($articuloarray);
-         }    
-
-    }
+//    public function getprecio(Request $request)
+//    {     
+//        if($request->ajax()){
+//            $idarticulov=articuloBD::where('idarticulov',$request->idarticulov)->get();      
+//            foreach($idarticulov as $articulo){
+//                
+//                $articuloarray[$articulo->idarticulov] = $articulo->preciov;
+//            }
+//            return response()->json($articuloarray);
+//         }    
+//
+//    }
 
     public function gettipo(Request $request)
     {     
         if($request->ajax()){
-            $idarticulov=articuloBD::where('idarticulov',$request->idarticulov)->get();      
+            $idarticulov=articuloBD::where('idarticulov',$request->idarticulov)->get();  
+            //$idarticulov=DB::table('tbl_articulovariante')
+            //                    ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')
+            //                    ->select(DB::raw("CONCAT(tbl_articulostock.idlarticulos,' - ',tbl_articulostock.nombrearticulo) as Articulo"))
+            //                    ->where('tbl_articulovariante.idarticulov', '=',$request->idarticulov)
+            //                    ->orWhere('tbl_articulostock.idlarticulos', '=',$request->Articulo)
+            //                    ->orWhere('tbl_articulostock.nombrearticulo', '=',$request->Articulo)
+            //                    ->get();       
             foreach($idarticulov as $articulo){
                 
                 $articuloarray[$articulo->idarticulov] = $articulo->tipov;
