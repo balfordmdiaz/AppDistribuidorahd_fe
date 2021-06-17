@@ -24,8 +24,8 @@
          <tr>
             <th scope="col">Id</th>
             <th scope="col">Fecha</th>
-            <th scope="col">Subtotal</th>
             <th scope="col">Total</th>
+            <th scope="col">Acciones</th>
          </tr>
     </thead>
 
@@ -35,8 +35,13 @@
       <tr>        
          <td id="codigo_fac">{{ $facturaItem->idlfactura }}</td>          
          <td>{{ $facturaItem->fechafactura }}</td>
-         <td>{{ $facturaItem->subtotal }}</td>
          <td>{{ $facturaItem->total }}</td>
+         <td>
+               <div id="padreenlaces">
+                <div id="b_editar"><a href="{{ route('factura.edit',$facturaItem->idfactura,'index') }}" >Editar</a></div>|
+                <div id="b_detalle"><a href="{{ route('factura.show',$facturaItem->idfactura) }}" >Factura</a></div>
+               </div>
+        </td> 
 
       </tr>
          
@@ -55,4 +60,3 @@
 </div>
 
 @endsection
-   

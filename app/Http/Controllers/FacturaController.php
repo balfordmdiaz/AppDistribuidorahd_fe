@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\DB;
 use App\Models\clienteBD;
-use App\Models\articuloBD;
 use App\Models\facturaBD;
 use App\Models\empleadoBD;
-use App\Models\factdetalleDB;
-
 use DateTime;
 use DateTimeZone;
-
-use Illuminate\Http\Request;
 
 class FacturaController extends Controller
 {
@@ -22,7 +19,7 @@ class FacturaController extends Controller
         $fecha=$aux.'%';
         $factura=facturaBD::where('fechafactura', 'like', $fecha)->orderBy('idfactura','DESC')->paginate(5);
         return view('factura',compact('factura'));
-    }
+    }   
 
 
     public function insertar()
@@ -36,6 +33,22 @@ class FacturaController extends Controller
             $factura->idfactura=0;
         }
         return view('project.insertarfact',compact('factura','cliente','empleado'));
+    }
+
+    public function show($id)
+    {
+
+       return view('facturar.facturapdf',[
+            'facturabd'=> facturaBD::findOrFail($id)
+        ]);
+
+    }
+
+    public function edit($id)
+    {
+        return view('project.vistafactura',[
+            'facturabd'=> facturaBD::findOrFail($id)
+        ]);
     }
 
 }
