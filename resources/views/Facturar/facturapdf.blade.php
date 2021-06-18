@@ -103,13 +103,13 @@
 
 
 <div id="salir">
-   <a href=" {{ route('factura.index') }} ">Salir</a>
+   <a href=" {{ route('factura.index') }} " style="color:darkred;">Salir</a>
 </div>
 
 
 <div class="w-33">
    <div class="center" id="btnimprimir">
-           <button id="imprimir_pdf" onclick="imprimir()">Imprimir</button>
+           <button id="imprimir_pdf" onclick="imprimir()" style="color: darkred;">Imprimir</button>
    </div>
 </div>
 

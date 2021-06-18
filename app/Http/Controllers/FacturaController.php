@@ -38,7 +38,7 @@ class FacturaController extends Controller
     public function show($id)
     {
 
-       return view('facturar.facturapdf',[
+       return view('Facturar.facturapdf',[
             'facturabd'=> facturaBD::findOrFail($id)
         ]);
 
