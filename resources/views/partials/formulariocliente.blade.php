@@ -18,14 +18,14 @@
           </div>
 
           <div class="form-group">
-              <input name="Nombre" type="text" class="form-control" placeholder="Nombre" maxlength="20" value="{{ old('Nombre') }}">
+              <input name="Nombre" type="text" class="form-control" placeholder="Nombre Completo" maxlength="50" value="{{ old('Nombre') }}">
               {!! $errors->first('Nombre','<small class="message_error">:message</small><br>') !!}
           </div>
 
-          <div class="form-group">
+          <!--<div class="form-group">//se elimino en BD el campo apellido
               <input name="Apellido" type="text" class="form-control" placeholder="Apellido" maxlength="20" value="{{ old('Apellido') }}" >
               {!! $errors->first('Apellido','<small class="message_error">:message</small><br>') !!}
-          </div>
+          </div>-->
 
           <div class="form-group">
               <input name="Cedula" type="text" class="form-control" placeholder="Cedula" maxlength="16" value="{{ old('Cedula') }}" >

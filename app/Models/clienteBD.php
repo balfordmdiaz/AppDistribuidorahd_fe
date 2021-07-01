@@ -11,7 +11,7 @@ class clienteBD extends Model
     protected $table='tbl_clientes';
     protected $primaryKey = 'idcliente';
 
-    protected $fillable = ['idlcliente','nombre','apellido','cedula','telefono','departamento','direccion','email'];
+    protected $fillable = ['idlcliente','nombrecompleto','cedula','telefono','departamento','direccion','email'];
     
     public $timestamps = false;
 }

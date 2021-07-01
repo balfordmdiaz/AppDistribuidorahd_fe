@@ -23,14 +23,14 @@
             </div>
   
             <div class="form-group">
-                <input name="Nombre" type="text" class="form-control" placeholder="Nombre" value="{{$clientebd->nombre}}" >
+                <input name="NombreCompleto" type="text" class="form-control" placeholder="Nombre Completo" value="{{$clientebd->nombrecompleto}}" >
                 {!! $errors->first('Nombre','<small>:message</small><br>') !!}
             </div>
   
-            <div class="form-group">
+            <!--<div class="form-group">
                 <input name="Apellido" type="text" class="form-control" placeholder="Apellido" value="{{$clientebd->apellido}}" >
                 {!! $errors->first('Apellido','<small>:message</small><br>') !!}
-            </div>
+            </div>-->
   
             <div class="form-group">
                 <input name="Cedula" type="text" class="form-control" placeholder="Cedula" value="{{$clientebd->cedula}}" > 

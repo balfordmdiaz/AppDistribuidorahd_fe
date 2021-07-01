@@ -37,8 +37,8 @@ class MessageClient extends Controller
 
         clienteBD::create([
             'idlcliente' => request('Idlcliente'),
-            'nombre' => request('Nombre'),
-            'apellido' => request('Apellido'),
+            'nombrecompleto' => request('Nombre'),
+            //'apellido' => request('Apellido'),
             'cedula' => request('Cedula'),
             'telefono' => request('Telefono'),
             'departamento' => request('Departamento'),
@@ -58,7 +58,7 @@ class MessageClient extends Controller
 
         request()->validate([
             'Idlcliente' => 'required',
-            'Nombre'  => 'required',
+            'NombreCompleto'  => 'required',
             'Departamento'  => 'required',
             
         ]);

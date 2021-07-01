@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function ()
         Route::post('/home/cliente/{Idcliente}/edit',[MessageClient::class, 'update'])->name('cliente.update');
 
         Route::get('/home/factura',[FacturaController::class, 'index'])->name('factura.index');
+        Route::get('/home/factura/insertar/cliente', [SearchController::class, 'cliente'])->name('search.cliente');
         Route::get('/home/factura/insertar',[FacturaController::class, 'insertar'])->name('factura.insertar');
         Route::get('/home/factura/insertar/{Idfactura}/index/facturar',[FacturaController::class, 'show'])->name('factura.show');
         Route::get('/home/factura/insertar/{Idfactura}/index',[FacturaController::class, 'edit'])->name('factura.edit');

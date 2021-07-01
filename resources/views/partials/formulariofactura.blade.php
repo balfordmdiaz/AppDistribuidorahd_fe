@@ -20,14 +20,15 @@
         
             <div class="form-group">
               <label for="idcliente" style="float: left">Cliente:</label>
-              <select  name="idlcliente" class="form-control">
+              <input id="idlcliente" name="idlcliente" type="text" class="form-control" value="">
+              <!--<select  name="idlcliente" class="form-control">
                     @forelse($cliente as $clienteItem)
                             <option value="{{ $clienteItem->idcliente }}">{{ $clienteItem->idlcliente }} - {{ $clienteItem->nombre }} {{ $clienteItem->apellido }} - {{ $clienteItem->departamento }}</option>
                     @empty
                             <option value="">No hay Clientes</option>
                     @endforelse
                  
-              </select>
+              </select>-->
             </div>
 
             <div class="form-group" style="display:none">
@@ -53,7 +54,31 @@
     <!--/.container-->
   </section>
 
-  <script>//Validacion de evitar carga de datos varias veces
+
+
+<script src="{{asset('js/jquery-ui/jquery-ui.min.js')}}"></script>
+
+<script>// manda a llamar o autocompletar datos buscados
+
+    $('#idlcliente').autocomplete({
+        source: function(request, response){
+            $.ajax({
+                url: "{{route('search.cliente')}}",
+                dataType: 'json',
+                data: {
+                    term: request.term
+                },
+                success: function(data){
+                    response(data)
+                }
+            });
+        }
+
+    });
+
+</script>
+
+<script>//Validacion de evitar carga de datos varias veces
           $('#formulariofactura').submit(function(e)
         {
             $('#btnrealizarf').on("click", function(e){
@@ -62,6 +87,4 @@
         });
 
   </script>
-
-
 

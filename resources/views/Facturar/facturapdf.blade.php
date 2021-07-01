@@ -30,8 +30,7 @@
    <div id="datos_cliente" style="">
       <h3 style="text-decoration: underline">Facturar a:</h3>
       <p><label> Cliente:</label> 
-         {{ $nombreclient = DB::table('tbl_clientes')->where('idcliente', $facturabd->idcliente)->value('nombre')  }} 
-         {{ $apellidoclient = DB::table('tbl_clientes')->where('idcliente', $facturabd->idcliente)->value('apellido') }}</p>
+         {{ $nombreclient = DB::table('tbl_clientes')->where('idcliente', $facturabd->idcliente)->value('nombrecompleto')  }}
       <p><label>Departemanto:</label> 
          {{ $departamentoclient = DB::table('tbl_clientes')->where('idcliente', $facturabd->idcliente)->value('departamento') }}</p>
    </div>

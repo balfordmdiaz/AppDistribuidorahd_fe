@@ -22,13 +22,13 @@
       <td style="font-weight: bold; text-decoration: underline">{{ $clientebd->idlcliente }}</td>
     </tr>
     <tr>
-      <th>Nombre</th>
-      <td>{{ $clientebd->nombre }}</td>
+      <th>Nombre Completo</th>
+      <td>{{ $clientebd->nombrecompleto }}</td>
     </tr>
-    <tr>
+    <!--<tr>
       <th>Apellido</th>
       <td>{{ $clientebd->apellido }}</td>
-    </tr>
+    </tr>-->
     <tr>
       <th>Cedula</th>
       <td>{{ $clientebd->cedula }}</td>

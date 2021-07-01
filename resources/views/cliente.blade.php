@@ -21,7 +21,7 @@
      <thead>
           <tr>
              <th scope="col">Codigo</th>
-             <th scope="col">Nombre</th>
+             <th scope="col">Nombre Completo</th>
              <th scope="col">Departamento</th>
              <th scope="col">Accion</th>
           </tr>
@@ -32,7 +32,8 @@
      <tbody>
        <tr>           
           <td id="codigo_cl">{{ $clienteItem->idlcliente }}</td>
-          <td>{{ $clienteItem->nombre }} {{ $clienteItem->apellido }}</td>
+          <!--<td>{{ $clienteItem->nombre }} {{ $clienteItem->apellido }}</td>-->
+          <td>{{ $clienteItem->nombrecompleto }}</td>
           <td>{{ $clienteItem->departamento }}</td>
           <td>
                <div id="padreenlaces">
