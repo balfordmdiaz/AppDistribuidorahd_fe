@@ -80,7 +80,7 @@
             class="form-group">
                  <label for="" style="float: left">Cliente:</label>    
                  <input name="idlcliente" type="text" class="form-control" placeholder="Codigo cliente" 
-                 value="{{ $idcliente = DB::table('tbl_clientes')->where('idcliente', $facturabd->idcliente)->value('idlcliente') }}" readonly="readonly">
+                 value="{{ $idcliente = DB::table('tbl_clientes')->where('idcliente', $facturabd->idcliente)->value('nombrecompleto') }}" readonly="readonly">
            </div>
 
           <div class="form-group">
