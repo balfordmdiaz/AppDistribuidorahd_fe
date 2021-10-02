@@ -211,65 +211,70 @@
 
   <div>
     
+    <div class="container">
+      <div class="table-responsive">
+        <table id="tabladetallefactura" class="table table-bordered table-hover">
+          <thead>
+               <tr>
+                  <th scope="col">Art</th>
+                  <th scope="col">Talla</i></th>
+                  <th scope="col">Cant</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Monto</th>
+               </tr>
+          </thead>
 
-    <table id="tabladetallefactura" class="table table-bordered table-hover">
-      <thead>
-           <tr>
-              <th scope="col">Art</th>
-              <th scope="col">Talla</i></th>
-              <th scope="col">Cant</th>
-              <th scope="col">Monto</th>
-           </tr>
-      </thead>
-  
-     @forelse($detalle = DB::table('tbl_facturadetalle')
-                            ->join('tbl_articulovariante', 'tbl_facturadetalle.idarticulov', '=', 'tbl_articulovariante.idarticulov')
-                            ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')
-                            ->join('tbl_factura', 'tbl_facturadetalle.idfactura', '=', 'tbl_factura.idfactura')
-                            ->select('tbl_articulostock.nombrearticulo', 'tbl_articulovariante.talla', 'tbl_facturadetalle.cantidad','tbl_facturadetalle.monto')
-                            ->where('tbl_facturadetalle.idfactura', $facturabd->idfactura)
-                            ->get()  as $detalleItem)
-      
-       <tbody>
-        <tr>        
-           <td>{{ $detalleItem->nombrearticulo }}</td>          
-           <td>{{ $detalleItem->talla }}</td>
-           <td>{{ $detalleItem->cantidad }}</td>
-           <td>{{ $detalleItem->monto }}</td>
+         @forelse($detalle = DB::table('tbl_facturadetalle')
+                                ->join('tbl_articulovariante', 'tbl_facturadetalle.idarticulov', '=', 'tbl_articulovariante.idarticulov')
+                                ->join('tbl_articulostock', 'tbl_articulovariante.idarticulos', '=', 'tbl_articulostock.idarticulos')
+                                ->join('tbl_factura', 'tbl_facturadetalle.idfactura', '=', 'tbl_factura.idfactura')
+                                ->select('tbl_articulostock.nombrearticulo', 'tbl_articulovariante.talla', 'tbl_facturadetalle.cantidad', 'tbl_facturadetalle.precio','tbl_facturadetalle.monto')
+                                ->where('tbl_facturadetalle.idfactura', $facturabd->idfactura)
+                                ->get()  as $detalleItem)
+
+           <tbody>
+            <tr>        
+               <td>{{ $detalleItem->nombrearticulo }}</td>          
+               <td>{{ $detalleItem->talla }}</td>
+               <td>{{ $detalleItem->cantidad }}</td>
+               <td>{{ $detalleItem->precio }}</td>
+               <td>{{ $detalleItem->monto }}</td>
+            </tr>
+
+         @empty
+
+
+          <tr>
+            <td colspan="5"><p style="text-align: center">No hay articulos para mostrar</p> </td>
+          </tr>  
+
+          </tbody>
+
+         @endforelse
+
+         <tr>
+           <th>Subtotal</th>
+           <td colspan="3">{{ $facturabd->subtotal }} C$</td>
+         </tr>
+
+         <tr>    
+           <th>Iva</th>
+           <td colspan="3">{{ $facturabd->iva }} C$</td>
+         </tr>
+
+        <tr>   
+           <th>Descuento</th>
+           <td colspan="3">{{ $facturabd->descuento }} C$</td>
         </tr>
-           
-     @empty
 
-     
-      <tr>
-        <td colspan="5"><p style="text-align: center">No hay articulos para mostrar</p> </td>
-      </tr>  
-     
-      </tbody>
+        <tr>
+           <th>Total</th>
+           <td colspan="3">{{ $facturabd->total }} C$</td>
+        </tr>
 
-     @endforelse
-
-     <tr>
-       <th>Subtotal</th>
-       <td colspan="3">{{ $facturabd->subtotal }} C$</td>
-     </tr>
-
-     <tr>    
-       <th>Iva</th>
-       <td colspan="3">{{ $facturabd->iva }} C$</td>
-     </tr>
-
-    <tr>   
-       <th>Descuento</th>
-       <td colspan="3">{{ $facturabd->descuento }} C$</td>
-    </tr>
-
-    <tr>
-       <th>Total</th>
-       <td colspan="3">{{ $facturabd->total }} C$</td>
-    </tr>
-
-  </table>
+        </table>
+      </div>
+    </div>    
   
 
 </div>
