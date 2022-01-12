@@ -9,13 +9,13 @@
         <form id="formulariofactura" method="POST" action="{{ route('factura.store') }}">
         @csrf
 
-           <div class="form-group" style="display:none">
-                <input name="id" type="text" class="form-control" value="{{ $id=$factura->idfactura }}">
-           </div>
+           <!--<div class="form-group" style="display:none">
+                <input name="id" type="text" class="form-control" value="{{ $fact_id  }}">
+           </div>-->
 
            <div class="form-group">
                 <label for="idfac" style="float: left">Codigo de Factura:</label>
-                <input name="idlfactura" type="text" class="form-control" placeholder="Codigo factura" value="FAC00{{ $id=$id+1 }}" readonly="readonly" />
+                <input name="idlfactura" type="text" class="form-control" placeholder="Codigo factura" value="{{ $fact_id }}" readonly="readonly" />
            </div>
         
             <div class="form-group">

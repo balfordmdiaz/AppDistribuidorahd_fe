@@ -254,22 +254,22 @@
 
          <tr>
            <th>Subtotal</th>
-           <td colspan="3">{{ $facturabd->subtotal }} C$</td>
+           <td colspan="4">{{ $facturabd->subtotal }} C$</td>
          </tr>
 
          <tr>    
            <th>Iva</th>
-           <td colspan="3">{{ $facturabd->iva }} C$</td>
+           <td colspan="4">{{ $facturabd->iva }} C$</td>
          </tr>
 
         <tr>   
            <th>Descuento</th>
-           <td colspan="3">{{ $facturabd->descuento }} C$</td>
+           <td colspan="4">{{ $facturabd->descuento }} C$</td>
         </tr>
 
         <tr>
            <th>Total</th>
-           <td colspan="3">{{ $facturabd->total }} C$</td>
+           <td colspan="4">{{ $facturabd->total }} C$</td>
         </tr>
 
         </table>
