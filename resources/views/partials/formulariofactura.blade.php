@@ -20,7 +20,7 @@
         
             <div class="form-group">
               <label for="idcliente" style="float: left">Cliente:</label>
-              <input id="idlcliente" name="idlcliente" type="text" class="form-control" value="">
+              <input id="idlcliente" name="idlcliente" type="text" class="form-control" value="" required>
               <!--<select  name="idlcliente" class="form-control">
                     @forelse($cliente as $clienteItem)
                             <option value="{{ $clienteItem->idcliente }}">{{ $clienteItem->idlcliente }} - {{ $clienteItem->nombre }} {{ $clienteItem->apellido }} - {{ $clienteItem->departamento }}</option>
