@@ -37,13 +37,29 @@ class ClienteController extends Controller
 
     public function insertar()
     {
-        $cliente=clienteBD::latest('idcliente')->first();
+        $cliente=clienteBD::latest('idcliente')->pluck('idcliente')->first();
         if(!$cliente)
         {
             $cliente=new clienteBD();
             $cliente->idcliente=0;
         }
-        return view('project.insertar',compact('cliente'));
+
+        //Autoincrementador de id cliente
+        $incrementId = $cliente + 1;
+        if($incrementId > 0 && $incrementId < 10){
+            $client_id = 'CLI'.'000'.$incrementId;
+        }
+        elseif ($incrementId >= 10 && $incrementId < 100){
+            $client_id = 'CLI'.'00'.$incrementId;
+        }
+        elseif ($incrementId >= 100 && $incrementId < 1000){
+            $client_id = 'CLI'.'0'.$incrementId;
+        }
+        elseif ($incrementId >= 1000){
+            $client_id = 'CLI'.$incrementId;
+        }
+
+        return view('project.insertar',compact('client_id'));
     }
 
 

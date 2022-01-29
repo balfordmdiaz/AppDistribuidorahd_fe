@@ -10,11 +10,11 @@
         @csrf
 
          <div class="form-group" style="display:none">
-             <input name="Id" type="text" class="form-control" value="{{$id=$cliente->idcliente}}" />
+             <input name="Id" type="text" class="form-control" value="{{$client_id}}" />
          </div>
 
           <div class="form-group">
-              <input name="Idlcliente" type="text" class="form-control" placeholder="Codigo Cliente" value="CLI{{$id=$id+1}}" readonly="readonly"/>
+              <input name="Idlcliente" type="text" class="form-control" placeholder="Codigo Cliente" value="{{$client_id}}" readonly="readonly"/>
           </div>
 
           <div class="form-group">
