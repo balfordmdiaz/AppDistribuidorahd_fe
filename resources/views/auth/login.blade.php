@@ -11,7 +11,10 @@
     </div>
    <div class="row contact-wrap">
      <div class="col-md-8 col-md-offset-2">
-            <form method="POST" action="{{ route('login') }}">
+        @if (Auth::check())
+            @include('Home')
+        @else
+            <form id="formLogin" method="POST" action="{{ route('login') }}">
               @csrf
                 <div class="form-group row">
                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo Electronico') }}</label>
@@ -40,10 +43,11 @@
                         @enderror
                     </div>
                 </div>
-                <div id="boton_form_client">
-                   <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
+                <div id="boton_form_user">
+                   <button id="btnLogin" type="submit" class="btn btn-primary">{{ __('Login') }}</button>
                 </div>
             </form>
+        @endif
         </div>
     </div>
 </div>

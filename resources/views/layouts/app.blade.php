@@ -23,6 +23,18 @@
 
     @include('partials.js')
     @yield('script')
+
+    
+
+    <script> //Validacion de evitar carga de datos varias veces
+        $('#formLogin').submit(function(e)
+        {
+            $('#btnLogin').on("click", function(e){
+                e.preventDefault();
+            });
+        });
+    </script>
+
 </body>
 </html>
 
